@@ -47,8 +47,9 @@ def git_cmd(_dir=None, _git=[], _mode="init"):
             else:
                 print _git_name + " do nothing ..."
             print _git_cmd
-            ps = subprocess.Popen(_git_cmd)
-            ps.wait()
+            if _git_cmd is not None and len(_git_cmd) > 0:
+                ps = subprocess.Popen(_git_cmd)
+                ps.wait()
     except Exception as ex:
         print traceback.format_exc()
     print "git pull down ..."
