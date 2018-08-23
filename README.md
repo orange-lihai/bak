@@ -2,11 +2,11 @@
 ```
 
 ---------------------------------------------------
-kancloud.cn _____        |---> mail.qq.com
+kancloud.cn _____        |---> mail.qq.com / mail.google.com
                  \       |
 gitee.com --------\ ---->|---> github.com
                   /      |
-processon.com ___/       |---> mail.google.com
+processon.com ___/       |---> pan.baidu.com 
                          |
                          |---> 移动盘
                          
