@@ -1,11 +1,11 @@
 #!/usr/bin/python
 # -*- encoding: utf-8 -*-
 
-import os, sys
 import argparse
+import os
+
 import biz.churen.ks.init as init
 import biz.churen.util.util as util
-import traceback
 
 __project_dir__ = os.path.dirname(__file__)
 __conf_dir__ = __project_dir__ + "/conf/"
@@ -40,3 +40,4 @@ if __name__ == '__main__':
     # util.rsa_encode(__conf_dir__ + "/k/", "k.dat")
     # util.rsa_decode(__conf_dir__ + "/k/", "k.dat.r")
     pass
+
