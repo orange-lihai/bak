@@ -26,7 +26,7 @@ def download(_soft=[], _down_load_dir=None):
 
 
 def git_cmd(_dir=None, _git=[], _mode="init"):
-    print "start init ..."
+    print "start " + _mode + " ..."
     os.chdir(_dir)
     try:
         for g in _git:
@@ -41,13 +41,20 @@ def git_cmd(_dir=None, _git=[], _mode="init"):
             elif _mode == "merge":
                 os.chdir(_dir + _git_name)
                 _git_cmd = ["git", "merge"]
+            elif _mode == "pull":
+                os.chdir(_dir + _git_name)
+                _git_cmd = ["git", "pull"]
             elif _mode == "push":
                 os.chdir(_dir + _git_name)
                 _git_cmd = ["git", "push"]
-            elif _mode == "append_push":
+            elif _mode == "remote_delete":
                 os.chdir(_dir + _git_name)
-                _git_cmd = ["git", "remote", "set-url", "--remove", "origin", "git@github.com:orange-lihai/"+_git_name+".git"]
-                _git_cmd.extend(["git", "remote", "set-url", "--add", "origin", "git@github.com:orange-lihai/"+_git_name+".git"])
+                _git_cmd = ["git", "remote", "set-url", "--delete", "origin",
+                            "git@github.com:orange-lihai/" + _git_name + ".git"]
+            elif _mode == "remote_add":
+                os.chdir(_dir + _git_name)
+                _git_cmd = ["git", "remote", "set-url", "--add", "origin",
+                            "git@github.com:orange-lihai/" + _git_name + ".git"]
             else:
                 print _git_name + " do nothing ..."
             print _git_cmd
@@ -56,7 +63,7 @@ def git_cmd(_dir=None, _git=[], _mode="init"):
                 ps.wait()
     except Exception as ex:
         print traceback.format_exc()
-    print "git pull down ..."
+    print "git " + _mode + " down ..."
 
 
 def do_init(_soft=[], _dir=None, _git=[]):
@@ -71,9 +78,10 @@ def do_init(_soft=[], _dir=None, _git=[]):
 
 def do_save(_dir=None, _git=[]):
     print "saving init ..."
-    git_cmd(_dir, _git, _mode="append_push")
+    git_cmd(_dir, _git, _mode="remote_delete")
+    git_cmd(_dir, _git, _mode="remote_add")
     git_cmd(_dir, _git, _mode="commit")
-    # git_cmd(_dir, _git, _mode="merge")
+    git_cmd(_dir, _git, _mode="pull")
     git_cmd(_dir, _git, _mode="push")
     print "saving done ..."
 
