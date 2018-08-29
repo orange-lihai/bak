@@ -44,6 +44,10 @@ def git_cmd(_dir=None, _git=[], _mode="init"):
             elif _mode == "push":
                 os.chdir(_dir + _git_name)
                 _git_cmd = ["git", "push"]
+            elif _mode == "append_push":
+                os.chdir(_dir + _git_name)
+                _git_cmd = ["git", "remote", "set-url", "--remove", "origin", "git@github.com:orange-lihai/"+_git_name+".git"]
+                _git_cmd.extend(["git", "remote", "set-url", "--add", "origin", "git@github.com:orange-lihai/"+_git_name+".git"])
             else:
                 print _git_name + " do nothing ..."
             print _git_cmd
@@ -67,6 +71,7 @@ def do_init(_soft=[], _dir=None, _git=[]):
 
 def do_save(_dir=None, _git=[]):
     print "saving init ..."
+    git_cmd(_dir, _git, _mode="append_push")
     git_cmd(_dir, _git, _mode="commit")
     # git_cmd(_dir, _git, _mode="merge")
     git_cmd(_dir, _git, _mode="push")

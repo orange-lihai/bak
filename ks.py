@@ -10,8 +10,7 @@ import biz.churen.util.util as util
 __doc__ = """
 -1, 这是一个存在循环依赖的计划
 
-0, 确定是 Win7+ 系统, 安装 Python 2.7.x 和 Git 2.17+
-   下面的 __soft__ 变量里面有下载地址 
+0, 确定是 Win7+ 系统, 安装 Python 2.7.x 和 Git 2.17+ , 下面的 __soft__ 变量里面有下载地址 
 1, 在 <当前用户目录>, 生成SSH公钥 ssh-keygen -t rsa -C "orange.lihai@foxmail.com"
    将生成的公钥 <当前用户目录>/.ssh/id_rsa.pub 添加到 github.com 和 gitee.com 和 kancloud.cn
    测试 ssh -T git@gitee.com
@@ -22,6 +21,7 @@ __doc__ = """
 3, [可选], 去目录 <__dir__>/__dependency__/ 目录下安装可能会有用的一些软件
 4, [必选], 下载安装 JetBrains 相关系列 和 看云客户端(kancloud.cn)
 x, 如果忘记了密码, 执行 ks.py --task k 
+y, 如果要补充新的项目, 添加到 __git__ 变量里面
 """
 
 __project_dir__ = os.path.dirname(__file__)
